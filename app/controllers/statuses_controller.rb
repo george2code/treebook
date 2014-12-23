@@ -12,7 +12,7 @@ class StatusesController < ApplicationController
   def show
   end
 
-  # GET /statuses/new
+  # GET /statuses/newra
   def new
     @status = Status.new
   end
@@ -25,7 +25,6 @@ class StatusesController < ApplicationController
   # POST /statuses.json
   def create
     @status = Status.new(status_params)
-
     respond_to do |format|
       if @status.save
         format.html { redirect_to @status, notice: 'Status was successfully created.' }
@@ -71,4 +70,8 @@ class StatusesController < ApplicationController
     def status_params
       params.require(:status).permit(:name, :content)
     end
+
+  def status_params
+    params.require(:status).permit(:content, :user_id)
+  end
 end
